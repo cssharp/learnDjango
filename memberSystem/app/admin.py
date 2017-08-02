@@ -5,6 +5,8 @@ from models import Member, Order
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('mobile', 'userName', 'createTime', 'isReceiveOrder')
     search_fields = ('mobile', 'userName')
+    list_filter = ('isReceiveOrder', 'isPurchased', 'isConfirmReceipt')
+
 
 # Register your models here.
 admin.site.register(Member)
