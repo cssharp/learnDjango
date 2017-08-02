@@ -7,14 +7,14 @@ class Member(models.Model):
         verbose_name = '用户' #提供了一个更容易让人阅读的名称
         verbose_name_plural = '用户' #复数形式
     memberId = models.AutoField(primary_key=True) #models.IntegerField(auto_created=True)
-    email = models.CharField(max_length=50, null=True)
+    email = models.CharField(max_length=50, null=True, blank=True)
     userName = models.CharField(max_length=50)
-    password = models.CharField(max_length=50, null=True)
-    score = models.IntegerField(null=True)
+    password = models.CharField(max_length=50, null=True, blank=True)
+    score = models.IntegerField(null=True, blank=True)
     isDeleted = models.BooleanField()
     isEnabled = models.BooleanField()
     createTime = models.DateTimeField()
-    myCode = models.CharField(max_length=50, null=True)
+    myCode = models.CharField(max_length=50, null=True, blank=True)
 
     def __unicode__(self):
         return self.userName
