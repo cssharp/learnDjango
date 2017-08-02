@@ -210,3 +210,13 @@ admin.site.register(Member)
 admin.site.register(Order, OrderAdmin)
 
 ```
+
+配置项
+---------
+```
+
+LANGUAGE_CODE = 'zh_CN'  //管理后台配置成中文
+
+TIME_ZONE = 'Asia/Shanghai'  //修改时区位上海
+
+```
