@@ -57,7 +57,12 @@ admin.site.register(Member)
 
 ```
 
-7. 使用mysql*需要事先创建数据库*
+7. 使用mysql
+创建数据库，支持中文中文
+```
+CREATE DATABASE memberSystem DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci
+```
+配置数据库
 ```
 DATABASES = {
     'default': {
