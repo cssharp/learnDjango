@@ -140,3 +140,12 @@ def detail(request, id):
         return json.dumps(d)
 
 ```
+
+model配置技巧
+---------
+1. Meta,表名/对象名
+2. 自增列,AutoField
+3. 是否可以为空, null=True/False
+4. 表单可以为空, black=True/False
+5. 字段长度, max_length=50
+
