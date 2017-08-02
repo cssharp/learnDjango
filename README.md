@@ -173,3 +173,23 @@ model配置技巧
 1. 通过model，把展示APP与数据库关联起来
 2. 通过view，把展示页面与数据库关联起来
 
+
+数据库处理
+---------
+```
+增
+models.Member.objects.create(userName='edc')
+
+删
+models.Member.objects.filter(userName='edc').delete()
+
+改
+models.Member.objects.filter(userName='edc').update(password='520')
+
+查
+models.Member.objects.get(userName='edc')
+```
+
+
+
+
