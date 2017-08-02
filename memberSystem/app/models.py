@@ -13,7 +13,8 @@ class Member(models.Model):
     score = models.IntegerField(null=True, blank=True)
     isDeleted = models.BooleanField()
     isEnabled = models.BooleanField()
-    createTime = models.DateTimeField()
+    createTime = models.DateTimeField(auto_now_add=True)
+    updateTime = models.DateTimeField(auto_now=True)
     myCode = models.CharField(max_length=50, null=True, blank=True)
 
     def __unicode__(self):
