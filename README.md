@@ -146,6 +146,19 @@ def detail(request, id):
 
 ```
 
+10. json response
+```
+def api_members(request):
+    members = Member.objects.all()
+    jsonStrx = serializers.serialize('json', members)
+
+    j = json.loads(jsonStrx)
+    jsonStrx = json.dumps(j, indent=4)
+
+    return HttpResponse(jsonStrx, content_type="application/json")
+
+```
+
 model配置技巧
 ---------
 1. Meta,表名/对象名
@@ -153,4 +166,10 @@ model配置技巧
 3. 是否可以为空, null=True/False
 4. 表单可以为空, black=True/False
 5. 字段长度, max_length=50
+
+
+总结
+---------
+1. 通过model，把展示APP与数据库关联起来
+2. 通过view，把展示页面与数据库关联起来
 
