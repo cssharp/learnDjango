@@ -37,6 +37,8 @@ class Member(models.Model):
     createTime = models.DateTimeField()
     myCode = models.CharField(max_length=50)
 
+    def __unicode__(self):
+        return self.userName
  ```
 5. 安装app
 ```

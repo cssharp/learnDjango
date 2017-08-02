@@ -15,3 +15,6 @@ class Member(models.Model):
     isEnabled = models.BooleanField()
     createTime = models.DateTimeField()
     myCode = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return self.userName
