@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from models import Member
+from django.http import HttpResponse
+from django.core import serializers
+import json
 
 # Create your views here.
 def member(request):
@@ -23,3 +26,13 @@ def listing(request):
         members = paginator.page(paginator.num_pages)
 
     return render(request, 'list.html', {'members': members})
+
+
+def api_members(request):
+    members = Member.objects.all()
+    jsonStrx = serializers.serialize('json', members)
+
+    j = json.loads(jsonStrx)
+    jsonStrx = json.dumps(j, indent=4)
+
+    return HttpResponse(jsonStrx, content_type="application/json")

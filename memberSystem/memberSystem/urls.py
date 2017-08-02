@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^member/', 'app.views.member'),
     url(r'^members/', 'app.views.listing'),
+    url(r'^api/members', 'app.views.api_members'),
 ]
