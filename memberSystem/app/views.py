@@ -1,6 +1,7 @@
+#coding:utf-8
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from models import Member
+from models import Member, Order
 from django.http import HttpResponse
 from django.core import serializers
 import json
@@ -36,3 +37,17 @@ def api_members(request):
     jsonStrx = json.dumps(j, indent=4)
 
     return HttpResponse(jsonStrx, content_type="application/json")
+
+
+def api_order(request):
+    if request.method == 'POST':
+        url = request.POST.get('url', "")
+        mobile = request.POST.get('mobile', "")
+        userName = request.POST.get('userName', "")
+        desc = request.POST.get('desc', "")
+
+        if(mobile==''):
+                return HttpResponse(u'{"result":-1, "desc":"手机号无效"}', content_type="application/json")
+        orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc)
+        return HttpResponse(u'{"result":0, "desc":"successful"}', content_type="application/json")
+    return HttpResponse(u'{"result":-99, "desc":"无效请求"}', content_type="application/json")
