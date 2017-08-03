@@ -220,3 +220,61 @@ LANGUAGE_CODE = 'zh_CN'  //管理后台配置成中文
 TIME_ZONE = 'Asia/Shanghai'  //修改时区位上海
 
 ```
+
+
+使用bootstrap样式
+---------
+1. 下载bootstrap文件到 app/static/目录
+```
+wget https://github.com/twbs/bootstrap/releases/download/v3.3.1/bootstrap-3.3.1-dist.zip
+unzip bootstrap-3.3.1-dist.zip
+```
+2. 配置setting, 
+```
+STATIC_URL = '/static/'
+```
+3. 设置一个静态页面 bootstrap.html
+```
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+  
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <form>
+        <fieldset>
+          <legend>MY ORDER</legend> 
+          <label>userName</label><input type="text" name="userName" /> <span class="help-block"> </span> 
+          <label>mobile</label><input type="text" name="mobile" /> <span class="help-block"> </span> 
+          <label>url</label><input type="text" name="url" /> <span class="help-block"> </span> 
+          <label>desc</label><input type="text" name="desc" /> <span class="help-block"> </span> 
+          <button class="btn" type="submit">提交</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <!-- jquery JavaScript -->
+    <script src="/static/js/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/bootstrap.min.js"></script> 
+  
+
+</body></html>
+
+```
+
