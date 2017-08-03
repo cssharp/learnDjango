@@ -1,10 +1,14 @@
 #coding:utf-8
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from models import Member, Order
 from django.http import HttpResponse
 from django.core import serializers
 import json
+
+
+def index(req):
+    return render_to_response('bootstrap.html',)
 
 # Create your views here.
 def member(request):
