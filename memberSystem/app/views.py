@@ -49,6 +49,9 @@ def api_order(request):
         mobile = request.POST.get('mobile', "")
         userName = request.POST.get('userName', "")
         price = request.POST.get('price', None)
+        if not price.isdigit():
+            price = None
+
         desc = request.POST.get('desc', "")
 
         if(mobile==''):

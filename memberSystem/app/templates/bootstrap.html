@@ -17,12 +17,13 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span12">
-      <form>
+      <form action="/api/order" method="post">
         <fieldset>
           <legend>MY ORDER</legend> 
           <label>userName</label><input type="text" name="userName" /> <span class="help-block"> </span> 
           <label>mobile</label><input type="text" name="mobile" /> <span class="help-block"> </span> 
-          <label>url</label><input type="text" name="url" /> <span class="help-block"> </span> 
+          <label>url</label><input type="text" name="url" /> <span class="help-block"> </span>
+          <label>price</label><input type="text" name="price" /> <span class="help-block"> </span>
           <label>desc</label><input type="text" name="desc" /> <span class="help-block"> </span> 
           <button class="btn" type="submit">提交</button>
         </fieldset>
