@@ -48,10 +48,11 @@ def api_order(request):
         url = request.POST.get('url', "")
         mobile = request.POST.get('mobile', "")
         userName = request.POST.get('userName', "")
+        price = request.POST.get('price', None)
         desc = request.POST.get('desc', "")
 
         if(mobile==''):
                 return HttpResponse(u'{"result":-1, "desc":"手机号无效"}', content_type="application/json")
-        orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc)
+        orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc, price=price)
         return HttpResponse(u'{"result":0, "desc":"successful"}', content_type="application/json")
     return HttpResponse(u'{"result":-99, "desc":"无效请求"}', content_type="application/json")
