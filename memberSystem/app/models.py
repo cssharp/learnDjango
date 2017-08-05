@@ -5,7 +5,7 @@ from django.db import models
 class Member(models.Model):
     class Meta:
         verbose_name = '用户' #提供了一个更容易让人阅读的名称
-        verbose_name_plural = '用户' #复数形式
+        verbose_name_plural = '用户列表' #复数形式
     memberId = models.AutoField(primary_key=True) #models.IntegerField(auto_created=True)
     email = models.CharField(max_length=50, null=True, blank=True)
     userName = models.CharField(max_length=50)
@@ -24,7 +24,7 @@ class Member(models.Model):
 class Order(models.Model):
     class Meta:
         verbose_name = '订单'
-        verbose_name_plural = '订单'
+        verbose_name_plural = '订单列表'
     orderId = models.AutoField(primary_key=True)
     userName = models.CharField("用户名", max_length=100, null=True, blank=True)
     mobile = models.CharField("手机号", max_length=11, null=False, blank=False)
