@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from models import Member, Order
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 import json
 
@@ -59,6 +59,25 @@ def api_order(request):
         orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc, price=price)
         return HttpResponse(u'{"result":0, "desc":"successful"}', content_type="application/json")
     return HttpResponse(u'{"result":-99, "desc":"无效请求"}', content_type="application/json")
+
+
+def order(request):
+    if request.method == 'POST':
+        url = request.POST.get('url', "")
+        mobile = request.POST.get('mobile', "")
+        userName = request.POST.get('userName', "")
+        price = request.POST.get('price', None)
+        if not price.isdigit():
+            price = None
+
+        desc = request.POST.get('desc', "")
+
+        if(mobile==''):
+             return HttpResponse(u'{"result":-1, "desc":"手机号无效"}', content_type="application/json")
+        orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc, price=price)
+        return HttpResponseRedirect("/orders/")
+    return HttpResponse(u'{"result":-99, "desc":"无效请求"}', content_type="application/json")
+
 
 def orders(request):
     orders = Order.objects.all()

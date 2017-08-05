@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^api/members', 'app.views.api_members'),
     url(r'^api/order', 'app.views.api_order'),
     url(r'^$', 'app.views.index'),
+    url(r'^order$', 'app.views.order'),
     url(r'^orders/$', 'app.views.orders'),
 ]
