@@ -293,3 +293,59 @@ DATETIME_FORMAT = 'Y-m-d H:i:s'
     list_editable = ['isReceiveOrder', 'userName']                         #列表可以编辑字段
 ```
 
+
+
+分页
+---------
+[启发参考](http://blog.csdn.net/fighter_yy/article/details/41308277)
+[官网参考](http://dj-pagination.readthedocs.io/en/latest/)
+
+1. install
+```
+pip install dj-pagination
+```
+
+2. 配置setting
+```
+INSTALLED_APPS = (
+    ...
+    'dj_pagination',
+    ...
+)
+
+MIDDLEWARE_CLASSES = (
+    ...
+    'dj_pagination.middleware.PaginationMiddleware',
+    ...
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS = [
+    ...
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    ...
+]
+```
+
+3. 配置模板
+```
+1. 模板头部
+{% load pagination_tags %}
+
+2. 每页显示数量（这段短代码的位置要在 放在 你显示 object_list 之前）
+{% autopaginate orders 5 %}
+
+3. 分页码
+{% paginate %}
+```
+
+4. 配置view
+```
+def orders(request):
+    orders = Order.objects.all()
+    return render(request, 'orders.html', {'orders': orders})
+```
