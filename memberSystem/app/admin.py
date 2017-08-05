@@ -7,6 +7,7 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ('mobile', 'userName')
     list_filter = ('isReceiveOrder', 'isPurchased', 'isConfirmReceipt')
     list_per_page = 10
+    list_editable = ['isReceiveOrder', 'userName']
 
 
 # Register your models here.
