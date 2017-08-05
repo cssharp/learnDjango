@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load pagination_tags %}
+{% autopaginate orders 5 %}
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +15,7 @@
   </head>
 
 <body>
+
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -28,10 +31,7 @@
 	</div>
 </div>
 
-    <!-- jquery JavaScript -->
-    <script src="/static/js/jquery.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
-
-
+<!-- Bootstrap core JavaScript -->
+<script src="/static/js/bootstrap.min.js"></script>
+{% paginate %}
 </body></html>
