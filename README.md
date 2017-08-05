@@ -278,3 +278,10 @@ STATIC_URL = '/static/'
 
 ```
 
+Tips
+---------
+1. Django Admin 时间格式化
+```
+DATETIME_FORMAT = 'Y-m-d H:i:s'
+```
+
