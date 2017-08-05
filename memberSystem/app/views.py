@@ -59,3 +59,7 @@ def api_order(request):
         orderId = Order.objects.create(userName=userName, url=url, mobile=mobile, desc=desc, price=price)
         return HttpResponse(u'{"result":0, "desc":"successful"}', content_type="application/json")
     return HttpResponse(u'{"result":-99, "desc":"无效请求"}', content_type="application/json")
+
+def orders(request):
+    orders = Order.objects.all()
+    return render(request, 'orders.html', {'orders': orders})
