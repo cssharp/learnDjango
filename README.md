@@ -284,4 +284,12 @@ Tips
 ```
 DATETIME_FORMAT = 'Y-m-d H:i:s'
 ```
+2. admin列表显示格式
+```
+    list_display = ('mobile', 'userName', 'createTime', 'isReceiveOrder')  #列表显示字段
+    search_fields = ('mobile', 'userName')								   #搜索字段
+    list_filter = ('isReceiveOrder', 'isPurchased', 'isConfirmReceipt')    #筛选字段
+    list_per_page = 10                                                     #分页
+    list_editable = ['isReceiveOrder', 'userName']                         #列表可以编辑字段
+```
 
