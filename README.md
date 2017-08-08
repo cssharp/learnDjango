@@ -349,3 +349,31 @@ def orders(request):
     orders = Order.objects.all()
     return render(request, 'orders.html', {'orders': orders})
 ```
+
+富文本编辑器配置
+---------
+[参考](https://my.oschina.net/springRan/blog/359433)
+1. 安装ckeditor
+```
+sudo pip install django-ckeditor
+
+```
+2. 配置setting.py
+```
+INSTALLED_APPS = (
+    ...
+    'ckeditor',
+    ...
+)
+```
+
+3. 配置model.py
+```
+from ckeditor.fields import RichTextField
+
+class Item(models.Model):
+    ...
+    itemDesc = RichTextField("商品描述")
+    ...
+
+```
