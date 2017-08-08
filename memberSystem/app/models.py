@@ -6,7 +6,7 @@ class Member(models.Model):
     class Meta:
         verbose_name = '用户' #提供了一个更容易让人阅读的名称
         verbose_name_plural = '用户列表' #复数形式
-    memberId = models.AutoField(primary_key=True) #models.IntegerField(auto_created=True)
+    memberId = models.AutoField("用户ID", primary_key=True) #models.IntegerField(auto_created=True)
     email = models.CharField(max_length=50, null=True, blank=True)
     userName = models.CharField(max_length=50)
     password = models.CharField(max_length=50, null=True, blank=True)
@@ -25,7 +25,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = '订单'
         verbose_name_plural = '订单列表'
-    orderId = models.AutoField(primary_key=True)
+    orderId = models.AutoField("订单ID", primary_key=True)
     userName = models.CharField("用户名", max_length=100, null=True, blank=True)
     mobile = models.CharField("手机号", max_length=11, null=False, blank=False)
     url = models.CharField("网址", max_length=1000, null=True, blank=True)
@@ -45,7 +45,7 @@ class Item(models.Model):
     class Meta:
         verbose_name = '商品'
         verbose_name_plural = '商品列表'
-    itemId = models.AutoField(primary_key=True)
+    itemId = models.AutoField("商品ID", primary_key=True)
     itemName = models.CharField("商品名称", max_length=100, null=False, blank=False)
     itemPic1 = models.ImageField("主图", upload_to='items')
     itemPic2 = models.ImageField("商品图片2", upload_to='items', null=True, blank=True)

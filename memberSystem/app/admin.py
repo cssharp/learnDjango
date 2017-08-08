@@ -17,7 +17,7 @@ class ItemAdmin(admin.ModelAdmin):
         return u'<img src="%s" weight=10 height=10/>' % obj.itemPic1.url
     image_tag.short_description = '主图'
     image_tag.allow_tags = True
-    list_display = ('image_tag', 'itemId', 'itemName', 'itemUSDPrice', 'itemCnPrice')
+    list_display = ('image_tag', 'itemId', 'itemWeight', 'itemName', 'itemUSDPrice', 'itemCnPrice')
 
 # Register your models here.
 admin.site.register(Member)
