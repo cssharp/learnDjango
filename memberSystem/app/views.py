@@ -1,7 +1,7 @@
 #coding:utf-8
 from django.shortcuts import render, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from models import Member, Order
+from models import Member, Order, Item
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 import json
@@ -82,3 +82,42 @@ def order(request):
 def orders(request):
     orders = Order.objects.all()
     return render(request, 'orders.html', {'orders': orders})
+
+
+
+def items(request):
+    items = Item.objects.all()
+    paginator = Paginator(items, 5) # Show 2 members per page
+
+    page = request.GET.get('page')
+    if page == '0' or page==None:
+        return HttpResponseRedirect("/api/items?page=1")
+    try:
+        page_items = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        page_items = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        page_items = []
+
+    jsonStrx = serializers.serialize('json', page_items)
+    j = json.loads(jsonStrx)
+    jsonStrx = json.dumps(j, indent=4)
+    return HttpResponse(jsonStrx, content_type="application/json")
+
+
+def item(request):
+    #get, post delete put
+    if request.method == 'GET':
+        itemId = request.GET.get('itemId')
+        cur_Item = Item.objects.filter(pk=itemId)
+        jsonStrx = serializers.serialize('json', cur_Item)
+
+        j = json.loads(jsonStrx)
+        if(len(j)>0):
+            jsonStrx = json.dumps(j[0], indent=4)
+        else:
+            jsonStrx = '{}'
+
+        return HttpResponse(jsonStrx, content_type="application/json")
