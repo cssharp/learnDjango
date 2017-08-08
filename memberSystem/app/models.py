@@ -47,7 +47,11 @@ class Item(models.Model):
         verbose_name_plural = '商品列表'
     itemId = models.AutoField(primary_key=True)
     itemName = models.CharField("商品名称", max_length=100, null=False, blank=False)
-    itemPics = models.CharField("商品图片", max_length=500, null=False, blank=False)
+    itemPic1 = models.ImageField("主图", upload_to='items')
+    itemPic2 = models.ImageField("商品图片2", upload_to='items', null=True, blank=True)
+    itemPic3 = models.ImageField("商品图片3", upload_to='items', null=True, blank=True)
+    itemPic4 = models.ImageField("商品图片4", upload_to='items', null=True, blank=True)
+    itemPic5 = models.ImageField("商品图片5", upload_to='items', null=True, blank=True)
     itemUSDPrice = models.IntegerField("价格美元($)", null=True, blank=True)
     itemCnPrice = models.IntegerField("价格人民币(¥)", null=True, blank=True)
     itemDesc = models.TextField("商品描述", max_length=500, null=False, blank=False)
