@@ -58,6 +58,7 @@ class Item(models.Model):
     itemDesc = RichTextField("商品描述")
     itemWeight = models.IntegerField("重量（磅）", null=False, blank=False)
     itemSourceUrl = models.CharField("商品url", max_length=300, null=True, blank=True)
+    itemViews = models.IntegerField("查看次数", default=0, null=False, blank=True)
 
     def __unicode__(self):
         return self.itemName

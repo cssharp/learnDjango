@@ -111,6 +111,14 @@ def item(request):
     #get, post delete put
     if request.method == 'GET':
         itemId = request.GET.get('itemId')
+        try:
+            obj = Item.objects.get(pk=itemId)
+            obj.itemViews += 1
+            obj.save()
+        except Item.DoesNotExist:
+          return HttpResponse("{}", content_type="application/json")
+
+
         cur_Item = Item.objects.filter(pk=itemId)
         jsonStrx = serializers.serialize('json', cur_Item)
 
