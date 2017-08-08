@@ -1,5 +1,6 @@
 #coding:utf-8
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Member(models.Model):
@@ -54,7 +55,7 @@ class Item(models.Model):
     itemPic5 = models.ImageField("商品图片5", upload_to='items', null=True, blank=True)
     itemUSDPrice = models.IntegerField("价格美元($)", null=True, blank=True)
     itemCnPrice = models.IntegerField("价格人民币(¥)", null=True, blank=True)
-    itemDesc = models.TextField("商品描述", max_length=500, null=False, blank=False)
+    itemDesc = RichTextField("商品描述")
     itemWeight = models.IntegerField("重量（磅）", null=False, blank=False)
     itemSourceUrl = models.CharField("商品url", max_length=300, null=True, blank=True)
 
