@@ -1,3 +1,5 @@
+#coding:utf-8
+
 from django.contrib import admin
 from models import Member, Order, Item
 
@@ -13,9 +15,9 @@ class OrderAdmin(admin.ModelAdmin):
 class ItemAdmin(admin.ModelAdmin):
     def image_tag(self, obj):
         return u'<img src="%s" weight=10 height=10/>' % obj.itemPic1.url
-    image_tag.short_description = 'Image'
+    image_tag.short_description = '主图'
     image_tag.allow_tags = True
-    list_display = ('image_tag', 'itemId', 'itemName')
+    list_display = ('image_tag', 'itemId', 'itemName', 'itemUSDPrice', 'itemCnPrice')
 
 # Register your models here.
 admin.site.register(Member)
