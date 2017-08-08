@@ -41,3 +41,18 @@ class Order(models.Model):
         return self.mobile
 
 
+class Item(models.Model):
+    class Meta:
+        verbose_name = '商品'
+        verbose_name_plural = '商品列表'
+    itemId = models.AutoField(primary_key=True)
+    itemName = models.CharField("商品名称", max_length=100, null=False, blank=False)
+    itemPics = models.CharField("商品图片", max_length=500, null=False, blank=False)
+    itemUSDPrice = models.IntegerField("价格美元($)", null=True, blank=True)
+    itemCnPrice = models.IntegerField("价格人民币(¥)", null=True, blank=True)
+    itemDesc = models.TextField("商品描述", max_length=500, null=False, blank=False)
+    itemWeight = models.IntegerField("重量（磅）", null=False, blank=False)
+    itemSourceUrl = models.CharField("商品url", max_length=300, null=True, blank=True)
+
+    def __unicode__(self):
+        return self.itemName
