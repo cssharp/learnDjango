@@ -292,6 +292,13 @@ DATETIME_FORMAT = 'Y-m-d H:i:s'
     list_per_page = 10                                                     #分页
     list_editable = ['isReceiveOrder', 'userName']                         #列表可以编辑字段
 ```
+3. 设置django管理后台的标题栏
+修改urls.py
+```
+admin.site.site_title = 'My Heading'
+admin.site.site_header = 'My Heading'
+admin.site.index_title = 'My Heading'
+```
 
 
 
