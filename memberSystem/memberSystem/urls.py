@@ -1,3 +1,4 @@
+#coding:utf-8
 """memberSystem URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -27,3 +28,7 @@ urlpatterns = [
     url(r'^api/items', 'app.views.items'),
     url(r'^api/item', 'app.views.item'),
 ]
+
+admin.site.site_title = '管理后台'
+admin.site.site_header = '管理后台'
+admin.site.index_title = '首页'
