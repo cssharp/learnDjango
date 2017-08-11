@@ -299,8 +299,16 @@ admin.site.site_title = 'My Heading'
 admin.site.site_header = 'My Heading'
 admin.site.index_title = 'My Heading'
 ```
-
-
+4. requirements.txt的创建及使用
+[参考](http://blog.csdn.net/loyachen/article/details/52028825)
+创建
+```
+pip freeze >requirements.txt
+```
+使用
+```
+pip install -r requirements.txt
+```
 
 分页
 ---------
